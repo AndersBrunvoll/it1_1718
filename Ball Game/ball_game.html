@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ball Game</title>
+
+    <style>
+        div#ball{
+            background-color: #7accc8;
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            left: 280px;
+            top: 100px;
+        }
+        h2{
+            text-align: center;
+        }
+    </style>
+
+</head>
+<body>
+
+    <h2>Ball Game:</h2>
+
+    <div id="ball"></div>
+
+    <script>
+
+        var ballLeft = 290
+        var ballTop = 100
+        var divBall = document.querySelector("#ball")
+
+        document.onkeydown = function (evt) {
+            evt = evt || window.event;
+            if (evt.keyCode === 40){
+                ballTop += 10;
+                divBall.style.top = ballTop + "px"
+            }
+            else if (evt.keyCode === 38){
+                ballTop -= 10;
+                divBall.style.top = ballTop + "px"
+            }
+            else if(evt.keyCode === 39){
+                ballLeft += 10;
+                divBall.style.left = ballLeft + "px"
+            }
+            else if(evt.keyCode === 37){
+                ballLeft -= 10;
+                divBall.style.left = ballLeft + "px"
+            }
+
+        }
+
+    </script>
+
+</body>
+</html>
