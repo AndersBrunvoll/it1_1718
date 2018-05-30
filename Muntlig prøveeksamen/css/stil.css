@@ -1,0 +1,235 @@
+body{
+    background-color: #C0C0C0;
+}
+.grid{
+    display: grid;
+    margin: 0;
+    grid-gap: 2px;
+    grid-template-columns: 1fr 5fr;
+    grid-template-areas:
+                    "header header"
+                    "nav main"
+                    "footer footer";
+}
+.header{
+    background-color: #847577;
+    text-align: center;
+    color: #E5E6E4;
+    font-weight: bold;
+    font-size: 200%;
+    grid-area: header;
+}
+.logo{
+    float: left;
+    margin: 5px;
+    grid-area: logo;
+}
+.nav{
+    background-color: #EBEBEB;
+    grid-area: nav;
+    text-decoration: none;
+    font-family: "Eras Medium ITC", sans-serif;
+    max-height: 200px;
+}
+.denne{
+    background-color: #847577;
+    padding: 5px;
+    margin: 0;
+    font-size: larger;
+}
+.nav li{
+    padding: 5px;
+    display: table;
+    text-decoration: none;
+}
+.nav li a{
+    text-decoration: none;
+    color: #484041;
+    font-weight: bold;
+}
+.nav li:hover{
+    background-color: #FBFBFB;
+    width: 96%;
+}
+.denne li a{
+    color: #E5E6E4;
+}
+.denne li:hover{
+    background-color: #847577;
+}
+.main1{
+    grid-area: main;
+    margin: 5px;
+    display: block;
+    position: relative;
+    background-color: #EBEBEB;
+    text-align: center;
+}
+.main1 h1{
+    font-family: "Eras Medium ITC", sans-serif;
+}
+.background{
+    width: auto;
+    opacity: 0.5;
+}
+.main2{
+    grid-area: main;
+    margin: 5px;
+    background-color: #EBEBEB;
+    text-align: center;
+}
+.main2 h1{
+    font-family: "Eras Medium ITC", sans-serif;
+}
+.main3{
+     grid-area: main;
+     margin: 5px;
+ }
+.main3 h1{
+    font-family: "Eras Medium ITC", sans-serif;
+}
+.main4{
+    grid-area: main;
+    margin: 5px;
+    background-color: #EBEBEB;
+    text-align: center;
+}
+.main4 h1{
+    font-family: "Eras Medium ITC", sans-serif;
+}
+.main5{
+    grid-area: main;
+    margin: 5px;
+    background-color: #EBEBEB;
+    text-align: center;
+}
+.main5 h1{
+    font-family: "Eras Medium ITC", sans-serif;
+}
+.footer{
+    text-align: center;
+    grid-area: footer;
+    font-family: "Eras Medium ITC", sans-serif;
+}
+.footer ul li{
+    text-decoration: none;
+    display: table;
+}
+.modal{
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+.modal-header {
+    padding: 2px 16px;
+    background-color: #847577;
+    color: white;
+    font-family: "Eras Medium ITC", sans-serif;
+}
+.modal-body {
+    padding: 2px 16px;
+}
+.modal-footer {
+    padding: 2px 16px;
+    background-color: #847577;
+    color: white;
+}
+.modal-content {
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 0;
+    border: 1px solid #888;
+    width: 80%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    animation-name: animatetop;
+    animation-duration: 0.4s
+}
+@keyframes animatetop {
+    from {top: -300px; opacity: 0}
+    to {top: 0; opacity: 1}
+}
+p{
+    font-family: "Eras Medium ITC", sans-serif;
+}
+h3{
+    font-family: "Eras Medium ITC", sans-serif;
+}
+.skjemaform .full_bredde{
+    grid-column: 1 / 3;
+}
+.skjemaform *{
+    text-align: center;
+}
+.skjemaform button{
+    background-color: #847577;
+    color: #EBEBEB;
+    border: 0;
+    padding: 10px;
+}
+.skjemaform button:hover{
+    background-color: #EBEBEB;
+    color: #847577;
+    cursor: pointer;
+}
+.pakker{
+    max-width: 1024px;
+    margin: auto;
+    background-color: #EBEBEB;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 35px;
+}
+.pakker img{
+    width: 250px;
+    height: 200px;
+}
+.rett{
+    width: 350px;
+    height: 450px;
+    background-color: #847577;
+    box-shadow: #484041 5px 5px 5px;
+    margin: auto;
+    text-align: center;
+    color: #E5E6E4;
+}
+h4{
+    font-family: "Eras Medium ITC", sans-serif;
+    font-size: larger;
+}
+.bknapp{
+    background-color: #847577;
+    color: #EBEBEB;
+    border: 0;
+    padding: 10px;
+}
+.bknapp:hover{
+    background-color: #EBEBEB;
+    color: #847577;
+    cursor: pointer;
+}
+.sletteKnapp{
+    background-color: #EBEBEB;
+    color: #847577;
+    border: 0;
+    padding: 10px;
+}

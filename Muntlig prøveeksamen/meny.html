@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Meny</title>
+    <link rel="stylesheet" href="css/stil.css">
+</head>
+<body>
+
+<div class="grid">
+    <div class="header">
+        <img src="bilder/Terra_jap_logo.PNG" alt="">
+    </div>
+
+
+    <div class="nav">
+        <li><a href="index.html">Resturanten</a></li>
+        <hr>
+        <div class="denne">
+            <li><a href="meny.html">Meny</a></li>
+        </div>
+        <hr>
+        <li><a href="bestill.html">Bestill bord</a></li>
+        <hr>
+        <li><a href="reg.html">Registrer matrett</a></li>
+        <hr>
+    </div>
+
+    <div class="main2">
+        <h1>Meny:</h1>
+        <img src="bilder/03921116ed9683cf9d6bcfa4f23c89c8.jpg" alt="" width="550px" height="350px">
+        <br>
+        <br>
+        <div class="pakker">
+
+        </div>
+        <br>
+        <br>
+    </div>
+
+    <div class="footer">
+        <h5>Ola Nordmann
+            <br>
+            +47 555 55 555
+            <br>
+            terra.tapas@hotmail.com
+            <br>
+            Stenberggata 43
+            <br>
+            0170 Oslo</h5>
+    </div>
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.9.1/firebase-firestore.js"></script>
+<script>
+    firebase.initializeApp({
+        apiKey: "AIzaSyBo0uQXU9uIRlsCTSX8yp_6WoDH9XWgbZg",
+        authDomain: "firestore-d455c.firebaseapp.com",
+        databaseURL: "https://firestore-d455c.firebaseio.com",
+        projectId: "firestore-d455c",
+        storageBucket: "firestore-d455c.appspot.com",
+        messagingSenderId: "841759557436"
+    });
+
+    // Initialize Cloud Firestore through Firebase
+    var db = firebase.firestore();
+
+    var pakkerE = document.querySelector(".pakker");
+
+    var ref = db.collection('tapas');
+
+    ref.onSnapshot(function (data) {
+        var objekt = data.docs;
+        for(var x in objekt){
+            pakkerE.innerHTML +=     "<div class='rett'>"
+                + "<h4>" + objekt[x].data().name + "</h4>"
+                + "<img src="+ objekt[x].data().picture + ">"
+                + "<p>" + objekt[x].data().kategori + "</p>"
+                + "<p>" + objekt[x].data().beskrivelse + "</p>"
+                + "<p>" + objekt[x].data().pris + "kr" + "</p>"
+                + "</div>";
+        }
+    });
+
+</script>
+
+</body>
+</html>

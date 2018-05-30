@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registrer matrett</title>
+    <link rel="stylesheet" href="css/stil.css">
+</head>
+<body>
+<div class="grid">
+    <div class="header">
+        <img src="bilder/Terra_jap_logo.PNG" alt="">
+    </div>
+
+
+    <div class="nav">
+        <li><a href="index.html">Resturanten</a></li>
+        <hr>
+        <li><a href="meny.html">Meny</a></li>
+        <hr>
+        <li><a href="bestill.html">Bestill bord</a></li>
+        <hr>
+        <div class="denne">
+            <li><a href="reg.html">Registrer matrett</a></li>
+        </div>
+        <hr>
+    </div>
+
+    <div class="main5">
+        <div class="login">
+            <h1>Logg inn:</h1>
+            <img src="bilder/japanese-kitchen-restaurant-12.jpg" alt="" width="550px" height="350px">
+            <p>
+                <label for="">Brukernavn:</label>
+                <br>
+                <input type="text" id="inputBrukernavn" placeholder="Brukernavn:">
+            </p>
+            <p>
+                <label for="">Passord:</label>
+                <br>
+                <input type="password" id="inputPassord" placeholder="Passord:">
+            </p>
+            <button id="bknapp" class="bknapp">Logg inn:</button>
+        </div>
+        <br>
+        <br>
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <span class="close">&times;</span>
+                    <h2>Registrer matrett:</h2>
+                </div>
+                <div class="modal-body">
+                    <div class="skjemapakker">
+                        <div class="skjemainfo">
+                            <h3>Registrer matrett:</h3>
+                            <p>Her kan du, som kokk, registrere matretter for restauranten Terra:</p>
+                        </div>
+                        <div class="skjemaform">
+                            <p>
+                                <label for="">Navn:</label>
+                                <br>
+                                <input type="text" id="inputName" placeholder="Navn på matrett">
+                            </p>
+                            <p>
+                                <label for="">Kategori:</label>
+                                <br>
+                                <select name="" id="inputKategori">
+                                    <option value="Kaldt kjøtt">Kaldt kjøtt</option>
+                                    <option value="Kald sjømat">Kald sjømat</option>
+                                    <option value="Varmt kjøtt">Varmt kjøtt</option>
+                                    <option value="Varm sjømat">Varm sjømat</option>
+                                    <option value="Vegetar">Vegetar</option>
+                                </select>
+                            </p>
+                            <p>
+                                <label for="">Kort beskrivelse:</label>
+                                <br>
+                                <input type="text" id="inputBeskrivelse" placeholder="Kort beskrivelse">
+                            </p>
+                            <p>
+                                <label for="">Bilde:</label>
+                                <br>
+                                <input type="file" id="inputBilde">
+                            </p>
+                            <p>
+                                <label for="">Pris:</label>
+                                <br>
+                                <input type="number" id="inputPris" placeholder="Pris">
+                            </p>
+                            <p class="full_bredde">
+                                <button id="buttonAdd">Registrer matrett</button>
+                            </p>
+                        </div>
+                        <div class="pakker">
+
+                        </div>
+                        <br>
+
+                    </div>
+                </div>
+                <div class="modal-footer"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <h5>Ola Nordmann
+            <br>
+            +47 555 55 555
+            <br>
+            terra.tapas@hotmail.com
+            <br>
+            Stenberggata 43
+            <br>
+            0170 Oslo</h5>
+    </div>
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.9.1/firebase-firestore.js"></script>
+<script>
+    firebase.initializeApp({
+        apiKey: "AIzaSyBo0uQXU9uIRlsCTSX8yp_6WoDH9XWgbZg",
+        authDomain: "firestore-d455c.firebaseapp.com",
+        databaseURL: "https://firestore-d455c.firebaseio.com",
+        projectId: "firestore-d455c",
+        storageBucket: "firestore-d455c.appspot.com",
+        messagingSenderId: "841759557436"
+    });
+
+    // Initialize Cloud Firestore through Firebase
+    var db = firebase.firestore();
+
+    var inputName = document.querySelector("#inputName");
+    var inputKategori = document.querySelector("#inputKategori");
+    var inputBeskrivelse = document.querySelector("#inputBeskrivelse");
+    var inputBilde = document.querySelector("#inputBilde");
+    var inputPris = document.querySelector("#inputPris");
+    var buttonAdd = document.querySelector("#buttonAdd");
+
+    buttonAdd.addEventListener("click", function () {
+        db.collection("tapas").add({
+            name:           inputName.value,
+            picture:        inputBilde.value,
+            kategori:       inputKategori.value,
+            beskrivelse:    inputBeskrivelse.value,
+            pris:           inputPris.value
+        })
+            .then(function() {
+                inputName.value             = "";
+                inputBilde.value            = "";
+                inputKategori.value         = "Kaldt kjøtt";
+                inputBeskrivelse.value      = "";
+                inputPris.value             = "";
+            });
+        alert("Registrering av matrett er ferdig.")
+    });
+
+    // Get the modal
+    var modal = document.getElementById("myModal");
+
+    // Get the button that opens the modal
+    var btn = document.getElementById("bknapp");
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks on the button, open the modal
+    btn.onclick = function() {
+        modal.style.display = "block";
+    };
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+        modal.style.display = "none";
+    };
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target === modal) {
+            modal.style.display = "none";
+        }
+    };
+
+    var buttonClear = document.querySelector("#bknapp");
+    var inputBrukernavn = document.querySelector("#inputBrukernavn");
+    var inputPassord = document.querySelector("#inputPassord");
+
+    buttonClear.addEventListener("click", function () {
+        inputBrukernavn.value = "";
+        inputPassord.value = "";
+    });
+
+    var pakkerE = document.querySelector(".pakker");
+
+    var ref = db.collection('tapas');
+
+    ref.onSnapshot(function (data) {
+        var objekt = data.docs;
+        pakkerE.innerHTML = "";
+        for(var x in objekt){
+            pakkerE.innerHTML +=     "<div class='rett'>"
+                + "<h4>" + objekt[x].data().name + "</h4>"
+                + "<img src="+ objekt[x].data().picture + ">"
+                + "<p>" + objekt[x].data().kategori + "</p>"
+                + "<p>" + objekt[x].data().beskrivelse + "</p>"
+                + "<p>" + objekt[x].data().pris + "kr" + "</p>"
+                + "<div>" /*+ objekt[x].data().rett*/ + "<button onclick='slettRett(\"" + objekt[x].id + "\")' id='sletteKnapp' class='sletteKnapp'>Slett</button>" + "</div>"
+                + "</div>";
+        }
+    });
+
+    function slettRett(id) {
+        db.collection("tapas").doc(id).delete();
+    }
+</script>
+</body>
+</html>

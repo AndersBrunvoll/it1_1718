@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bestill bord</title>
+    <link rel="stylesheet" href="css/stil.css">
+</head>
+<body>
+
+<div class="grid">
+    <div class="header">
+        <img src="bilder/Terra_jap_logo.PNG" alt="">
+    </div>
+
+
+    <div class="nav">
+        <li><a href="index.html">Resturanten</a></li>
+        <hr>
+        <li><a href="meny.html">Meny</a></li>
+        <hr>
+        <div class="denne">
+            <li><a href="bestill.html">Bestill bord</a></li>
+        </div>
+        <hr>
+        <li><a href="reg.html">Registrer matrett</a></li>
+        <hr>
+    </div>
+
+    <div class="main4">
+        <h1>Bestill bord:</h1>
+        <img src="bilder/ef8efa815fc2ae9eda6274982031692a.jpg" alt="" width="550px" height="350px">
+        <h3>Ring oss:
+            <br>
+            +47 465 58 863</h3>
+        <h3>Besøk oss:
+            <br>
+            Stenberggata 43</h3>
+        <img src="bilder/Stenberggata.PNG" alt="" width="550px" height="350px">
+        <h3>Send oss en mail:
+            <br>
+            terra.tapas@hotmail.com</h3>
+
+        <h3>Eller bestill bord her:</h3>
+        <button id="bknapp" class="bknapp">Bestill bord</button>
+        <br>
+        <h3>Hvordan du spiser sushien vår:</h3>
+        <video src="bilder/The%20Right%20Way%20To%20Eat%20Sushi%20According%20To%20Renowned%20Japanese%20Chef%20Nobu%20Matsuhisa.mp4" width="550" height="350px" controls></video>
+        <br>
+        <br>
+
+        <div id="myModal" class="modal">
+
+            <div class="modal-content">
+                <div class="modal-header">
+                    <span class="close">&times;</span>
+                    <h2>Bestill bord:</h2>
+                </div>
+                <div class="modal-body">
+                    <div class="skjemapakker">
+                        <div class="skjemainfo">
+                            <h3>Bestill bord:</h3>
+                            <p>Bestill ditt bord ved å fylle inn informasjonen under:</p>
+                        </div>
+                        <div class="skjemaform">
+                            <p>
+                                <label for="">Fornavn:</label>
+                                <br>
+                                <input type="text" id="inputFornavn" placeholder="Fornavn:">
+                            </p>
+
+                            <p>
+                                <label for="">Etternavn:</label>
+                                <br>
+                                <input type="text" id="inputEtternavn" placeholder="Etternavn:">
+                            </p>
+
+                            <p>
+                                <label for="">Antall gjester:</label>
+                                <br>
+                                <select name="" id="inputAntall">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
+                                    <option value="11">11</option>
+                                    <option value="12">12</option>
+                                </select>
+                            </p>
+
+                            <p>
+                                <label for="">Hvor kunne du tenke deg å sitte?</label>
+                                <br>
+                                <select name="" id="inputSitte">
+                                    <option value="Ved vindu">Ved vindu</option>
+                                    <option value="Ved disken">Ved disken</option>
+                                    <option value="Innerst i restauranten">Innerst i restauranten</option>
+                                    <option value="Ikke viktig">Ikke viktig</option>
+                                </select>
+                            </p>
+                            <p>
+                                <label for="">Dato og tidspunkt:</label>
+                                <br>
+                                <input type="date" id="inputDate"> <input type="time" id="inputTime">
+                            </p>
+
+                            <br>
+                            <p>
+                                <button id="buttonAdd" class="button_bestill">Bestill bord</button>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="footer">
+        <h5>Ola Nordmann
+            <br>
+            +47 555 55 555
+            <br>
+            terra.tapas@hotmail.com
+            <br>
+            Stenberggata 43
+            <br>
+            0170 Oslo</h5>
+    </div>
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.9.1/firebase-firestore.js"></script>
+<script>
+    firebase.initializeApp({
+        apiKey: "AIzaSyBo0uQXU9uIRlsCTSX8yp_6WoDH9XWgbZg",
+        authDomain: "firestore-d455c.firebaseapp.com",
+        databaseURL: "https://firestore-d455c.firebaseio.com",
+        projectId: "firestore-d455c",
+        storageBucket: "firestore-d455c.appspot.com",
+        messagingSenderId: "841759557436"
+    });
+
+    // Initialize Cloud Firestore through Firebase
+    var db = firebase.firestore();
+
+    var buttonAdd = document.querySelector("#buttonAdd");
+    var inputFornavn = document.querySelector("#inputFornavn");
+    var inputEtternavn = document.querySelector("#inputEtternavn");
+    var inputAntall = document.querySelector("#inputAntall");
+    var inputSitte = document.querySelector("#inputSitte");
+    var inputDate = document.querySelector("#inputDate");
+    var inputTime = document.querySelector("#inputTime");
+
+    buttonAdd.addEventListener("click", function () {
+        db.collection("bord").add({
+            fornavn:    inputFornavn.value,
+            etternavn:  inputEtternavn.value,
+            antall:     inputAntall.value,
+            sitte:      inputSitte.value,
+            date:       inputDate.value,
+            time:       inputTime.value
+        })
+            .then(function () {
+                inputFornavn.value = "";
+                inputEtternavn.value = "";
+                inputAntall.value = "1";
+                inputSitte.value = "Ved vindu";
+                inputDate.value = "";
+                inputTime.value = "";
+            });
+    });
+
+    // Get the modal
+    var modal = document.getElementById("myModal");
+
+    // Get the button that opens the modal
+    var btn = document.getElementById("bknapp");
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks on the button, open the modal
+    btn.onclick = function() {
+        modal.style.display = "block";
+    };
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+        modal.style.display = "none";
+    };
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target === modal) {
+            modal.style.display = "none";
+        }
+    };
+
+</script>
+
+</body>
+</html>
