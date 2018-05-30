@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css?family=Orbitron:500|Rajdhani:400,700');
+body {
+    background-color: darkcyan;
+}
+
+h1{
+    font-size: 70px;
+    font-family: 'Orbitron', sans-serif;
+    color: wheat;
+    text-align: center;
+}
+
+h2{
+    font-size: 45px;
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: lighter;
+    color: wheat;
+    text-align: center;
+}
+
+div.textboks{
+
+    width: 900px;
+    margin: 50px auto;
+    padding: 30px;
+    background-color: wheat;
+    border-radius: 50px;
+    font-family: 'Rajdhani', sans-serif;
+
+
+}
+
+div.pakker h3{
+    font-weight: bold;
+    font-size: x-large;
+    align-items: center;
+
+}
+.bilde_hovedkort{
+    display: block;
+    float: left;
+    width: 28%;
+}
+.bilde_arbeidsminne{
+    display: block;
+    float: left;
+    width: 28%;
+}
+.bilde_prosessor{
+    display: block;
+    float: left;
+    width: 28%;
+}
+.bilde_lagringsmedium{
+    display: block;
+    float: left;
+    width: 28%;
+}
+.break{
+    clear: both;
+}
