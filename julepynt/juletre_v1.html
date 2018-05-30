@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Juletre</title>
+    <style>
+        body{
+            background-color: red;
+        }
+        .pakker{
+            width: 1000px;
+            margin: auto;
+            background-color: black;
+            text-align: center;
+        }
+        .green{
+            color: green;
+        }
+        .red{
+            color: red;
+        }
+        .gold{
+            color: gold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="pakker"></div>
+
+    <script>
+        var pakkerE = document.querySelector(".pakker");
+        var julelys = 3;
+        var hakk = 1
+        setInterval(function () {
+
+            pakkerE.innerHTML += "<span class='gold'>+<br></span>";
+            pakkerE.innerHTML += "<span class='gold'>+ +<br></span>";
+            pakkerE.innerHTML += "<span class='gold'>+<br></span>";
+            for(var y = 0; y<25; y=y+1){
+                /*pakkerE.innerHTML += "+";*/
+
+                for(var x = 0; x<y+1; x++){
+               /* pakkerE.innerHTML += "<span class='green'> + </span>";*/
+               if((x*y)%9===0){
+                   pakkerE.innerHTML += "<span class='red'> + </span>";
+               }
+               else {
+                   pakkerE.innerHTML += "<span class='green'> + </span>";
+               }
+                }
+
+                pakkerE.innerHTML += "<br>";
+            }
+        });
+    </script>
+
+</body>
+</html>
