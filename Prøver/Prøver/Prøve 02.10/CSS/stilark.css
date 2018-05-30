@@ -1,0 +1,76 @@
+body{
+    background-color: #28abe3;
+    font-family: sans-serif;
+}
+.oppgave{
+    width: 1000px;
+    padding: 50px;
+    background-color: #f7eac8;
+    min-height: 300px;
+    margin: 80px auto;
+    position: relative;
+}
+h1{
+    color: #db3340;
+    font-size: 100px;
+    text-align: center;
+}
+h2{
+    color: #37422e;
+    margin-top: -80px;
+    text-align: center;
+}
+h3{
+    background-color: #b89115;
+    font-size: 100px;
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    left: -60px;
+    top: -60px;
+    text-align: center;
+    border-radius: 60px;
+    margin: 0;
+    color: white;
+}
+img{
+    display: block;
+    margin: auto;
+}
+.paragraf_en{
+    color: #b89115;
+}
+h5{
+    color: #eb7260;
+    font-size: larger;
+}
+h4{
+    color: #b89115;
+    font-size: larger;
+}
+li{
+    border: 5px solid #28abe3;
+    padding: 5px;
+    margin: 5px;
+}
+input{
+    display: block;
+    width: 220px;
+    padding: 5px;
+    border: 2px solid #b89115;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+p{
+    font-size: larger;
+}
+a{
+    text-decoration: none;
+}
+h6{
+    color: wheat;
+}
+h6:hover{
+    color: white;
+}
+

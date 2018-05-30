@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css?family=Yantramanav');
+body{
+    background: darkcyan;
+}
+h1{
+    color: wheat;
+    font-family: 'Yantramanav', sans-serif;
+    text-align: center;
+    font-size: 200%;
+}
+h3{
+    text-align: left;
+}
+p{
+    font-family: 'Yantramanav', sans-serif;
+    color: wheat;
+    text-align: center;
+    font-size: 175%;
+}
+ul li{
+    display: block;
+    font-size: 150%;
+    text-align: center;
+}
+a{
+    text-decoration: none;
+    font-family: 'Yantramanav', sans-serif;
+    color: wheat;
+}
+li a{
+    margin: auto;
+    padding: 10px;
+    border: solid 3px;
+    border-radius: 5px;
+    display: block;
+    width: 300px;
+}
+li a:hover{
+    color: white;
+}
+h3:hover{
+    color: white;
+}
