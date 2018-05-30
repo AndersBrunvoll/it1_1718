@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Katter</title>
+</head>
+<body>
+
+<form id="katteskjema">
+    <input id="katteNavn" type="text" placeholder="Kattens navn" required>
+    <input id="katteRase" type="text" placeholder="Kattens rase" required>
+    <button type="submit">Legg til katt</button>
+</form>
+
+<script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.9.0/firebase-firestore.js"></script>
+
+<script>
+    firebase.initializeApp({
+        apiKey: "AIzaSyBo0uQXU9uIRlsCTSX8yp_6WoDH9XWgbZg",
+        authDomain: "firestore-d455c.firebaseapp.com",
+        databaseURL: "https://firestore-d455c.firebaseio.com",
+        projectId: "firestore-d455c",
+        storageBucket: "firestore-d455c.appspot.com",
+        messagingSenderId: "841759557436"
+    });
+
+    // Initialize Cloud Firestore through Firebase.
+    var db              = firebase.firestore();
+
+    // Oppretter kobling til "mappen" (collection) katter i Firestore.
+    var katter          = db.collection("katter");
+
+    // Henter form-elementet "katteSkjema" fra DOM-en.
+    var katteSkjema     = document.querySelector("#katteSkjema");
+
+    // Henter id-elementer fra DOM-en.
+    var inpKattenavn    = document.querySelector("#katteNavn");
+    var inpKatterase    = document.querySelector("#katteRase");
+
+    // Kaller på funksjonen registrerKatt når skjemaet sendes inn.
+    katteSkjema.onsubmit = registrerKatt;
+        // Legger til ny katt i Firestore-databasen.
+    function registrerKatt(evt) {
+        evt.preventDefault(evt);
+        // Legger til nytt dokument i katter-collectionen.
+        katter.add(
+            {
+            kattenavn: inpKattenavn.value,
+            katterase: inpKatterase.value
+            }
+        );
+        katteSkjema.reset();
+        inpKattenavn.focus();
+    }
+</script>
+
+</body>
+</html>
