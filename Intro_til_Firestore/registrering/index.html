@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fartskontroll</title>
+    <link rel="stylesheet" href="stil.css">
+</head>
+<body>
+
+    <h1>Fartskontroll</h1>
+
+    <form action="">
+        Navn: <input type="text" class="navn" placeholder="Ditt navn:">
+        <br> <br>
+        Bilnummer: <input type="text" class="nummer" placeholder="Ditt bilnummer:">
+        <br> <br>
+        Hastighet: <input type="number" class="fart" placeholder="Din hastighet:">
+        <br> <br>
+        Tidspunkt: <input type="datetime-local" class="tidspunkt">
+        <br> <br>
+    </form>
+    <br>
+    <button class="registrer">Registrer:</button>
+    <br>
+    <br>
+    <div class="liste">
+        <h2>Sjåfører:</h2>
+
+        <table>
+            <thead>
+            <tr class="header">
+                <th>Navn:</th> <th>Bilnummer:</th> <th>Hastighet:</th> <th>Dato:</th> <th>Klokkeslett:</th>
+            </tr>
+            </thead>
+            <tbody class="register">
+
+            </tbody>
+        </table>
+    </div>
+
+
+    <script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.6.0/firebase-firestore.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>

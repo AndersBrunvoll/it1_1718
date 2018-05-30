@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Min Første Database - Alene</title>
+
+    <style>
+        body{
+            font-family: sans-serif;
+            background-color: #7accc8;
+        }
+        h1{
+            text-align: center;
+            color: #124559;
+        }
+        .inputs{
+            text-align: center;
+            background-color: #a3d39c;
+            border: solid;
+            margin: 15px;
+            padding: 15px;
+            border-color: #124559;
+        }
+        .button{
+            text-align: center;
+        }
+    </style>
+
+</head>
+<body>
+
+    <h1>Min første database - alene</h1>
+
+    <div class="inputs">
+    <input type="text" class="fornavn" placeholder="Fornavn"> <br> <br>
+    <input type="text" class="etternavn" placeholder="Etternavn"> <br> <br>
+    <input type="number" class="alder" placeholder="Alder"> <br> <br>
+    <input type="email" class="email" placeholder="E-Post"> <br> <br>
+    </div>
+    <div class="button">
+    <button class="registrer">Registrer bruker</button>
+    </div>
+
+    <ul class="liste"></ul>
+
+
+    <script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.6.0/firebase-firestore.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>

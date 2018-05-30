@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registrer ny film</title>
+    <link rel="stylesheet" href="css/stil.css">
+</head>
+<body>
+
+<div class="grid">
+
+    <div class="header">
+        <h1>Header</h1>
+    </div>
+
+    <div class="nav">
+        <ul>
+            <li><a href="index.html">Alle Filmer:</a></li>
+            <li><a href="top10.html">Topp 10:</a></li>
+            <li><a href="bot10.html">Bunn 10:</a></li>
+            <li class="denne"><a href="reg.html">Registrer Film:</a></li>
+        </ul>
+    </div>
+
+    <div class="skjemapakker">
+        <div class="skjemainfo">
+            <h1>Registrer ny film:</h1>
+            <p>Her kan du registrere filmer og gi dem en vurdering.</p>
+        </div>
+
+        <div class="skjemamessage">
+
+        </div>
+
+        <div class="skjemaform">
+        <p>
+            <label for="">Tittel:</label>
+            <br>
+            <input type="text" id="inputTitle">
+        </p>
+        <p>
+            <label for="">Sjanger:</label>
+            <br>
+            <select name="" id="inputGenre">
+                <option value="Action">Action</option>
+                <option value="Animasjon">Animasjon</option>
+                <option value="Barn">Barn</option>
+                <option value="Dokumentar">Dokumentar</option>
+                <option value="Drama">Drama</option>
+                <option value="Familie">Familie</option>
+                <option value="Fantasy">Fantasy</option>
+                <option value="Grøsser">Grøsser</option>
+                <option value="Komedie">Komedie</option>
+                <option value="Krigsfilm">Krigsfilm</option>
+                <option value="Krim">Krim</option>
+                <option value="Romantikk">Romantikk</option>
+                <option value="Sci-Fi">Sci-Fi</option>
+                <option value="Thriller">Thriller</option>
+                <option value="Western">Western</option>
+            </select>
+        </p>
+        <p>
+            <label for="">Årstall:</label>
+            <br>
+            <input type="text" id="inputYear">
+        </p>
+        <p>
+            <label for="">Vurdering: <span id="outputRating"></span></label>
+            <br>
+            <input type="range" min="0" max="10" value="5" step="0.1" id="inputRating">
+        </p>
+        <p class="full_bredde">
+            <button id="buttonAdd">Legg til film</button>
+        </p>
+    </div>
+    </div>
+    <div class="footer">
+        <h4>Footer</h4>
+    </div>
+
+</div>
+<script src="https://www.gstatic.com/firebasejs/4.6.2/firebase.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-firestore.js"></script>
+
+<script>
+    firebase.initializeApp({
+        apiKey: "AIzaSyBo0uQXU9uIRlsCTSX8yp_6WoDH9XWgbZg",
+        authDomain: "firestore-d455c.firebaseapp.com",
+        databaseURL: "https://firestore-d455c.firebaseio.com",
+        projectId: "firestore-d455c",
+        storageBucket: "firestore-d455c.appspot.com",
+        messagingSenderId: "841759557436"
+    });
+
+    // Initialize Cloud Firestore through Firebase
+    var db = firebase.firestore();
+
+
+
+    var inputTitle      = document.querySelector("#inputTitle");
+    var inputGenre      = document.querySelector("#inputGenre");
+    var inputYear       = document.querySelector("#inputYear");
+    var inputRating     = document.querySelector("#inputRating");
+    var outputRating    = document.querySelector("#outputRating");
+    var buttonAdd       = document.querySelector("#buttonAdd");
+    var registerTbody   = document.querySelector(".register");
+    var eSkjemamessage  = document.querySelector(".skjemamessage");
+
+    outputRating.innerHTML = inputRating.value;
+    inputRating.oninput = function () {
+        outputRating.innerHTML = inputRating.value;
+    };
+
+    buttonAdd.addEventListener("click", function () {
+        db.collection("filmdb").add({
+            title:  inputTitle.value,
+            genre:  inputGenre.value,
+            year:   inputYear.value,
+            rating: inputRating.value*1
+        });
+            then(function(docRef) {
+                console.log("Filmen er lagt til i databasen med ID: ", docRef.id);
+                eSkjemamessage.innerHTML = "<h3>" + "Filmen," + " " + inputTitle.value + ", "
+                                                    + "ble lagt til i databasen." + "</h3>";
+                inputTitle.value =      "";
+                inputGenre.value =      "";
+                inputYear.value  =      "";
+                inputRating.value =     "";
+                outputRating.value =    5;
+            });
+            .catch(function(error) {
+                console.error("Feilmelding med opplasting til databasen: ", error);
+            });
+
+
+    });
+
+   /* var mappe = db.collection("filmdb");
+
+    mappe.onSnapshot(function (data) {
+        registerTbody.innerHTML = "";
+        var dokumenter = data.docs;
+        for(var x in dokumenter){
+            registerTbody.innerHTML += "<tr><td>"
+                                    + dokumenter[x].data().title + " "
+                                    + "("+ dokumenter[x].data().year +")"
+                                    + "</td><td>"
+                                    + dokumenter[x].data().genre
+                                    + "</td><td>"
+                                    + dokumenter[x].data().rating
+                                    + "</td>" + "</tr>"
+        }
+    }); */
+
+</script>
+
+</body>
+</html>

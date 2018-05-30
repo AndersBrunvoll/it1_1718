@@ -1,0 +1,29 @@
+body{
+    text-align: center;
+    background-color: #BA1F33;
+}
+h1{
+    font-size: 250%;
+    border: solid white 5px;
+    border-radius: 5px;
+}
+.pakker{
+    max-width: 1024px;
+    margin: auto;
+    background-color: #DA8990;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 35px;
+}
+.luke{
+    width: 200px;
+    height: 200px;
+    font-size: 180px;
+    background-color: white;
+    box-shadow: #5C1724 5px 5px 5px;
+    margin: auto;
+}
+.luke:hover{
+    background-color: #db3340;
+    color: white;
+}

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Alle Filmer</title>
+    <link rel="stylesheet" href="css/stil.css">
+</head>
+<body>
+
+<div class="grid">
+
+    <div class="header">
+        <h1>Header</h1>
+    </div>
+
+    <div class="nav">
+        <ul>
+            <li><a href="index.html">Alle Filmer:</a></li>
+            <li><a href="top10.html">Topp 10:</a></li>
+            <li><a href="bot10.html">Bunn 10:</a></li>
+            <li class="denne"><a href="reg.html">Registrer Film:</a></li>
+        </ul>
+    </div>
+
+    <div class="skjemapakker">
+
+    </div>
+
+    <div class="footer">
+
+    </div>
+
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/4.6.2/firebase.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-firestore.js"></script>
+
+<script>
+    firebase.initializeApp({
+        apiKey: "AIzaSyBo0uQXU9uIRlsCTSX8yp_6WoDH9XWgbZg",
+        authDomain: "firestore-d455c.firebaseapp.com",
+        databaseURL: "https://firestore-d455c.firebaseio.com",
+        projectId: "firestore-d455c",
+        storageBucket: "firestore-d455c.appspot.com",
+        messagingSenderId: "841759557436"
+    });
+
+    // Initialize Cloud Firestore through Firebase
+    var db = firebase.firestore();
+
+    var pakkerE = document.querySelector(".skjemapakker");
+    var luke = document.querySelector(".luke");
+
+    var ref = db.collection("filmdb");
+    //var query = ref.where("luke", "==", 12).where("luke", "==", 24);
+
+    ref.onSnapshot(function (data) {
+        var objekt = data.docs;
+        for(var x in objekt){
+
+            pakkerE.innerHTML += "<div class='luke'>"
+                + "<div>" + objekt[x].data().title + "</div>"
+                + "<div>" + objekt[x].data().genre + "</div>"
+                + "<div>" + objekt[x].data().year + "</div>"
+                + "<div>" + objekt[x].data().rating + "</div>"
+                + "</div>"
+
+        }
+    });
+</script>
+
+</body>
+</html>

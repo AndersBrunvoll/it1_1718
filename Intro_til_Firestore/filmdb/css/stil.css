@@ -1,0 +1,109 @@
+body{
+    background-color: #C1EDCC;
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+}
+.grid{
+    display: grid;
+    grid-template-areas:
+                "header"
+                "nav"
+                "skjemapakker"
+                "footer";
+}
+.header{
+    background-color: #A7A7A9;
+    text-align: center;
+    color: #453F3C;
+    font-weight: bold;
+    font-size: larger;
+    grid-area: header;
+}
+.nav{
+    background-color: #797270;
+    grid-area: nav;
+}
+.nav li{
+    display: inline;
+    padding: 5px;
+}
+.nav li a{
+    text-decoration: none;
+    color: #A7A7A9;
+    padding: 5px;
+    font-size: 150%;
+    font-weight: bold;
+}
+.nav li a:hover{
+    background-color: #453F3C;
+    color: #A7A7A9;
+    padding: 20px;
+}
+.skjemapakker{
+    max-width: 1024px;
+    margin: auto;
+    background-color: #DA8990;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 35px;
+    text-align: center;
+}
+.luke{
+    background-color: #3b8054;
+}
+.skjemainfo{
+    background-color: #A7A7A9;
+    color: #453F3C;
+    text-align: center;
+    padding: 10px;
+}
+.skjemainfo ul{
+    list-style: none;
+    padding: 0;
+}
+.skjemainfo p{
+    font-size: 200%;
+}
+.skjemainfo h1{
+    font-size: 300%;
+}
+.skjemaform{
+    background-color: white;
+    padding: 10px 17px 10px 10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
+    color: #453F3C;
+}
+.skjemaform p{
+    margin: 0;
+    font-weight: bold;
+}
+.skjemaform .full_bredde{
+    grid-column: 1 / 3;
+}
+.skjemaform *{
+    width: 100%;
+    font-size: 20px;
+}
+.skjemaform button{
+    background-color: #A7A7A9;
+    color: #453F3C;
+    border: 0;
+    padding: 10px;
+}
+.skjemaform button:hover{
+    background-color: #453F3C;
+    color: #A7A7A9;
+    cursor: pointer;
+}
+.skjemamessage{
+    background-color: #A7A7A9;
+    grid-gap: 0;
+}
+.footer{
+    background-color: #797270;
+    text-align: center;
+    color: #A7A7A9;
+    font-size: larger;
+}
