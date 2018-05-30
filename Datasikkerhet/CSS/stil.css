@@ -1,0 +1,158 @@
+@import url('https://fonts.googleapis.com/css?family=Signika');
+body{
+    margin: 0;
+    font-family: 'Signika', sans-serif;
+    font-size: 150%;
+    background-color: white;
+}
+.grid{
+    display: grid;
+    grid-gap: 2px;
+    grid-template-areas:
+                "header"
+                "nav"
+                "main"
+                "footer";
+}
+.header{
+    background-color: white;
+    text-align: center;
+    color: #870E20;
+    font-weight: bold;
+    font-size: larger;
+    grid-area: header;
+}
+.logo{
+    display: none;
+    grid-area: logo;
+}
+.nav{
+    background-color: white;
+    grid-area: nav;
+}
+.denne{
+    background-color: #5C1724;
+    padding: 5px;
+    margin: 0;
+}
+.main{
+    background-color: #DA8990;
+    color: #5C1724;
+    grid-area: main;
+}
+.aside1{
+    background-color: #BA1F33;
+    display: none;
+    grid-area: aside1;
+}
+.ads{
+    background-color: #BA1F33;
+    display: none;
+    grid-area: ads;
+    margin: 0;
+    background-image: url("../Bilder/snickers-bounty.jpg");
+    background-size: cover;
+}
+.footer{
+    background-color: white;
+    color: #870E20;
+    font-size: 150%;
+    text-align: center;
+    font-weight: bold;
+    grid-area: footer;
+}
+.nav li{
+    display: inline;
+    padding: 5px;
+}
+.nav li a {
+    text-decoration: none;
+    color: #5C1724;
+    padding: 5px;
+}
+.denne li a{
+    color: white;
+    padding: 5px;
+}
+.main p a{
+    text-decoration: none;
+    font-weight: bold;
+    color: #5C1724;
+    padding: 5px;
+}
+.nav li a:hover{
+    background-color: #BA1F33;
+    color: #5C1724;
+}
+.denne li a:hover{
+    background-color: #5C1724;
+    color: white;
+}
+.aside1 li a{
+    text-decoration: none;
+    color: #5C1724;
+    padding: 5px;
+}
+p{
+    padding: 5px;
+}
+h1{
+    padding: 5px;
+}
+h2{
+    padding: 5px;
+}
+h3{
+    padding: 5px;
+}
+h4{
+    padding: 5px;
+}
+h5{
+    padding: 5px;
+}
+@media (min-width: 800px) {
+    div.grid{
+        margin: auto;
+        grid-template-columns: auto 300px;
+        grid-template-rows: auto auto 400px auto;
+        grid-template-areas:
+                    "header header"
+                    "nav nav"
+                    "main ads"
+                    "main . "
+                    "footer footer";
+    }
+    div.ads{
+        display: block;
+    }
+    div.logo{
+        display: block;
+        float: left;
+    }
+}
+
+@media (min-width: 1500px) {
+    div.grid{
+        margin: auto;
+        grid-template-columns: auto auto 300px;
+        grid-template-rows: 200px auto auto 100px;
+        grid-template-areas:
+                    "header header header"
+                    "nav main ads"
+                    "aside1 main ads"
+                    "footer footer footer";
+    }
+    div.aside1{
+        display: block;
+    }
+    div.logo{
+        display: block;
+    }
+    div.ads{
+        display: block;
+    }
+    .nav li{
+        display: block;
+    }
+}
