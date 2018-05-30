@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Telefonkatalogen</title>
+    <link rel="stylesheet" href="../css/stil.css">
+</head>
+<body>
+
+<div class="header">
+    <a href="index.html">Telefonkatalogen.no</a>
+</div>
+
+<div class="nav">
+    <ul>
+        <li><a href="reg.html">Legg til ditt nummer:</a></li>
+    </ul>
+</div>
+
+<div class="main">
+    //søkemeny//
+    <div class="liste">
+        <h2>Telefonkatalog:</h2>
+
+        <table>
+            <thead>
+            <tr class="header">
+                <th>Fornavn:</th> <th>Etternavn:</th> <th>Nummer:</th> <th>Adresse:</th>
+            </tr>
+            </thead>
+            <tbody class="register">
+
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="footer">
+
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.9.0/firebase-firestore.js"></script>
+
+<script>
+    firebase.initializeApp({
+        apiKey: "AIzaSyBo0uQXU9uIRlsCTSX8yp_6WoDH9XWgbZg",
+        authDomain: "firestore-d455c.firebaseapp.com",
+        databaseURL: "https://firestore-d455c.firebaseio.com",
+        projectId: "firestore-d455c",
+        storageBucket: "firestore-d455c.appspot.com",
+        messagingSenderId: "841759557436"
+    });
+
+    // Initialize Cloud Firestore through Firebase
+    var db = firebase.firestore();
+
+    var registerTbody = document.querySelector(".register");
+
+    var ref = db.collection("telefonkatalog");
+
+    ref.onSnapshot(function (data) {
+        registerTbody.innerHTML = "";
+        var dokumenter = data.docs;
+        for(var x in dokumenter) {
+            registerTbody.innerHTML += "<tr><td>" + dokumenter[x].data().firstname + "</td>"
+                                    + "<td>" + dokumenter[x].data().lastname +"</td>"
+                                    + "<td>" + dokumenter[x].data().number + "</td>"
+                                    + "<td>" + dokumenter[x].data().address + "</td></tr>"
+        }
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registrer telefonnummer</title>
+    <link rel="stylesheet" href="../css/stil.css">
+</head>
+<body>
+
+<div class="header">
+    <a href="index.html">Telefonkatalogen.no</a>
+</div>
+
+<div class="nav">
+    <ul>
+        <li><a href="index.html">Tilbake:</a></li>
+    </ul>
+</div>
+
+<div class="main">
+    <div class="skjemainfo">
+        <h1>Legg inn telefonnummer:</h1>
+        <p>Her kan du legge inn navnet, telefonnummeret og adressen din i registeret.</p>
+    </div>
+
+    <div class="skjemamessage">
+
+    </div>
+
+    <div class="skjemaform">
+        <p>
+            <label for="">Foravn:</label>
+            <br>
+            <input type="text" id="inputFname">
+        </p>
+
+        <p>
+            <label for="">Etternavn:</label>
+            <br>
+            <input type="text" id="inputEname">
+        </p>
+
+        <p>
+            <label for="">Telefonnummer</label>
+            <br>
+            <input type="number" id="inputNumber">
+        </p>
+
+        <p>
+            <label for="">Adresse:</label>
+            <br>
+            <input type="text" id="inputAddress">
+        </p>
+        <p class="full_bredde">
+            <button id="buttonAdd">Legg til info:</button>
+        </p>
+    </div>
+</div>
+
+<div class="footer">
+    <h1>Footer</h1>
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.9.0/firebase-firestore.js"></script>
+
+<script>
+    firebase.initializeApp({
+        apiKey: "AIzaSyBo0uQXU9uIRlsCTSX8yp_6WoDH9XWgbZg",
+        authDomain: "firestore-d455c.firebaseapp.com",
+        databaseURL: "https://firestore-d455c.firebaseio.com",
+        projectId: "firestore-d455c",
+        storageBucket: "firestore-d455c.appspot.com",
+        messagingSenderId: "841759557436"
+    });
+
+    // Initialize Cloud Firestore through Firebase
+    var db = firebase.firestore();
+
+
+    var inputFname      = document.querySelector("#inputFname");
+    var inputEname      = document.querySelector("#inputEname");
+    var inputNumber     = document.querySelector("#inputNumber");
+    var inputAddress    = document.querySelector("#inputAddress");
+    var buttonAdd       = document.querySelector("#buttonAdd");
+    var eSkjemamessage  = document.querySelector(".skjemamessage");
+
+    buttonAdd.addEventListener("click", function () {
+        db.collection("telefonkatalog").add({
+            firstname:      inputFname.value,
+            lastname :      inputEname.value,
+            number:         inputNumber.value,
+            address:        inputAddress.value
+        });
+        inputFname.value    = "";
+        inputEname.value    = "";
+        inputNumber.value   = "";
+        inputAddress.value  = "";
+        then(function (docRef) {
+            console.log("Informasjonen er lagt til i databasen med ID: ", docRef.id);
+            eSkjemamessage.innerHTML = "<h3>" + inputFname + inputEname + ", " + "ligger nå i våre register." + "</h3>";
+        });
+    });
+</script>
+</body>
+</html>
