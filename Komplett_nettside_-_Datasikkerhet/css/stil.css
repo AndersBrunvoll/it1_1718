@@ -1,0 +1,124 @@
+
+
+body{
+    margin: 0;
+    font-size: large;
+    background-color: #90A9B7;
+}
+p{
+    font-size: large;
+}
+p::first-letter{
+    font-size: 200%;
+
+}
+    div.grid{
+    display: grid;
+    grid-template-areas:
+            "header"
+            "nav"
+            "main"
+            "footer";
+    grid-gap: 2px;
+    }
+div.header{
+    background-color: #EFD09E;
+    grid-area: header;
+}
+div.nav{
+    background-color: #E2D0BE;
+    grid-area: nav;
+}
+div.main{
+    background-color: #EFD09E;
+    grid-area: main;
+}
+div.aside1{
+    background-color: #D4AA7D;
+    grid-area: aside1;
+    display: none;
+}
+div.footer{
+    background-color: #272727;
+    grid-area: footer;
+    color: #272727;
+}
+.nav li{
+    display: inline;
+    margin: 5px;
+    padding: 5px;
+}
+.nav li a:hover{
+    color: #EFF6E0;
+    border-radius: 2px;
+    background-color: saddlebrown;
+    padding: 5px;
+    margin: auto;
+}
+.main p a{
+    font-weight: bold;
+    color: black;
+}
+.main p a:hover{
+    color: saddlebrown;
+}
+.footer h3:hover{
+    color: #D4AA7D;
+}
+ul a{
+    text-decoration: none;
+    color: black;
+}
+a{
+    text-decoration: none;
+}
+
+@media (min-width: 800px) {
+
+    div.grid{
+        grid-template-columns: 1fr 3fr;
+        grid-template-areas:
+                    "header header"
+                    "nav nav"
+                    "aside1 main"
+                    "footer footer";
+    }
+    div.aside1{
+        background-color: #D4AA7D;
+        grid-area: aside1;
+        display: block;
+    }
+    .aside1 li a{
+        text-decoration: none;
+    }
+    .aside1 li a:hover{
+        color: #EFF6E0;
+        border-radius: 2px;
+        background-color: saddlebrown;
+        margin: 5px;
+        padding: 5px;
+        max-width: 140px;
+    }
+}
+
+@media (min-width: 1600px) {
+
+    div.grid{
+        grid-template-columns: 1fr 3fr 1fr;
+        grid-template-areas:
+                    "header header header"
+                    "nav main main"
+                    "aside1 main main"
+                    "footer footer footer";
+    }
+    .nav li{
+        display: block;
+    }
+    div.aside1{
+        background-color: #D4AA7D;
+        grid-area: aside1;
+    }
+    ul a{
+        text-decoration: none;
+    }
+}
