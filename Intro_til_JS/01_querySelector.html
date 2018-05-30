@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>querySelector</title>
+
+    <style>
+
+        .red{
+            color: red;
+            background-color: orange;
+        }
+        .green{
+            color: green;
+            background-color: red;
+        }
+        .blue{
+            color: blue;
+            background-color: green;
+        }
+        .orange{
+            color: orange;
+            background-color: blue;
+        }
+        .white{
+            color: white;
+            background-color: black;
+        }
+
+    </style>
+</head>
+<body>
+
+        <div id="boks">Hei</div>
+
+        <div id="tall"></div>
+
+        <script>
+
+            document.querySelector('#boks').innerHTML += ", Molde vgs.";
+
+
+            //løkke eller for-løkke
+
+            for(var i = 1; i<1000; i++)
+            {
+
+                if(i%3===0){
+                    document.querySelector('#tall').innerHTML += "<span class='red'>" + i + "</span>" + " ";
+                }
+                else if(i%5===0)
+                {
+                    document.querySelector('#tall').innerHTML += "<span class='blue'>" + i + "</span>" + " ";
+                }
+                else if(i%4===0)
+                {
+                    document.querySelector('#tall').innerHTML += "<span class='green'>" + i + "</span>" + " ";
+                }
+                else if(i%7===0)
+                {
+                    document.querySelector('#tall').innerHTML += "<span class='orange'>" + i + "</span>" + " ";
+                }
+                else {
+                    document.querySelector('#tall').innerHTML += "<span class='white'>" + i + "</span>" + " ";
+                }
+
+                if(1%10===0){
+                    document.querySelector('#tall').innerHTML += "<br>";
+
+                }
+
+            }
+
+
+        </script>
+
+</body>
+</html>
