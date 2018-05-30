@@ -1,0 +1,50 @@
+body{
+    background-color: #a3d39c;
+    margin: 0;
+    padding: 15px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.skjemapakker{
+    max-width: 1024px;
+    margin: auto;
+    box-shadow: #37422e -4px 4px 4px;
+}
+.skjemainfo{
+    background-color: #37422e;
+    color: #a3d39c;
+    text-align: center;
+    padding: 10px;
+}
+.skjemainfo ul{
+    list-style: none;
+    padding: 0;
+}
+.skjemaform{
+    background-color: white;
+    padding: 10px 17px 10px 10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
+}
+.skjemaform p{
+    margin: 0;
+}
+.skjemaform .full_bredde{
+    grid-column: 1 / 3;
+}
+.skjemaform *{
+    width: 100%;
+    font-size: 20px;
+}
+.skjemaform button{
+    background-color: #37422e;
+    color: #a3d39c;
+    border: 0;
+    padding: 10px;
+}
+.skjemaform button:hover{
+    background-color: #a3d39c;
+    color: #37422e;
+    cursor: pointer;
+}
