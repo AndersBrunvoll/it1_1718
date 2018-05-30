@@ -1,0 +1,21 @@
+body{
+    background-color: darkcyan;
+}
+
+.pakker{
+    background-color: wheat;
+    padding: 5px;
+    margin: 5px;
+    text-align: center;
+}
+ul li{
+    display: inline;
+    text-decoration: none;
+    margin: 5px;
+    padding: 5px;
+
+}
+
+
+
+

@@ -1,0 +1,41 @@
+body{
+    background: burlywood;
+    text-align: center;
+    font-family: 'Yantramanav', sans-serif;
+}
+
+h1{
+    border: 3px solid bisque;
+    margin: auto;
+    width: 250px;
+    padding: 5px;
+    color: saddlebrown;
+    background: beige;
+    border-radius: 5px;
+}
+
+ul{
+    border: 3px solid bisque;
+    width: 80px;
+    background: saddlebrown;
+    margin: auto;
+    padding: 0;
+    list-style: none;
+    border-radius: 5px;
+}
+li a{
+    background: beige;
+    display: block;
+    margin: 4px;
+    padding: 2px;
+    color: saddlebrown;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 5px;
+}
+ul a:hover{
+    color: beige;
+    background: saddlebrown;
+}
+
+
